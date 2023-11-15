@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    text-align: center;
+    background-color: #005B41;
+    display: grid;
+    color: white;
+    grid-template-areas: 
+     "header header header"
+     "menu noticias destaque"
+     "servicos resultados resultados"
+     "footer footer footer"
+    ;
+}
+
+.header {
+    grid-area: header;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    width: 100%;
+    background-color: #0F0F0F;
+}
+
+.logo-menu{
+    width: 100px;
+    height: 100px;
+}
+
+.linha{
+    height: 2px;
+    width: 100%;
+    background-color: red;
+}
+  
+.menu {
+    grid-area: menu;
+    padding: 10px;
+    margin-right: 5px;
+    background-color: #232D3F;
+    border: 1px solid black;
+}
+
+.links-menu{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.links-menu  a{
+   color: white;
+   text-decoration: none;  
+   background-color: #008170;
+   padding: 10px;
+   margin-bottom: 5px;
+}
+
+a:hover{
+    background-color: #035247;
+    text-decoration: underline;
+}
+.noticias {
+    grid-area: noticias;
+    padding: 10px;
+    margin-right: 5px;
+    background-color: #232D3F;
+    border: 1px solid black;
+}
+.noticia{
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #0F0F0F;
+}
+
+.titulo-noticia{
+
+}
+  
+.destaque {
+    grid-area: destaque;
+    padding: 10px;
+    border: 1px solid black;
+}
+  
+.servicos {
+    grid-area: servicos;
+    padding: 10px;
+    margin-top: 5px;
+    margin-right: 5px;
+    border: 1px solid black;
+}
+  
+.resultados {
+    grid-area: resultados;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid black;
+}
+  
+.footer {
+    grid-area: footer;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid black;
+}
