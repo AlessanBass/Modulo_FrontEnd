@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/header.css">
+    <link rel="stylesheet" href="./style/body.css">
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/footer.css">
+    <link rel="stylesheet" href="./style/form.css">
+    <link rel="stylesheet" href="./style/responsividade.css">
+    <script src="https://kit.fontawesome.com/dc1a1422df.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Vina+Sans&display=swap" rel="stylesheet">
+    <title>Viagens</title>
+</head>
+<body>
+    <header>
+        <h1 class="h1-header">Ale Turismo</h1>
+
+        <nav>
+            <a href="" class="link-header">Sobre nós</a> |
+            <a href="" class="link-header">Contato</a> |
+            <a href="" class="link-header">Regulamento</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h2 class="h2-main">Destinos</h2>
+
+        <div class="flex-main">
+            <div class="destino elemento">
+                <img class="img-destino" src="./img/salvador.jpg" alt="Salvador">
+                <h3 class="destino-h3">Salvador</h3>
+                <div class="destino-roteiro">
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Áereo ida e volta
+                    </p>
+    
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        03 diárias
+                    </p>
+    
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Café da manhã
+                    </p>
+                </div>
+    
+                <h4 class="preco-destino">
+                    R$670,00
+                </h4>
+    
+                <div class="obs-destino">
+                    <p>Taxas inclusas</p>
+                    <p>Em até 10x sem juros</p>
+                </div>
+    
+                <button>Comprar</button>
+            </div>
+    
+            <div class="destino elemento">
+                <img class="img-destino" src="./img/fortaleza.jpg" alt="Salvador">
+                <h3 class="destino-h3">Fortaleza</h3>
+                <div class="destino-roteiro">
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Áereo ida e volta
+                    </p>
+    
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        06 diárias
+                    </p>
+    
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Café da manhã
+                    </p>
+                </div>
+    
+                <h4 class="preco-destino">
+                    R$1513,00
+                </h4>
+    
+                <div class="obs-destino">
+                    <p>Taxas inclusas</p>
+                    <p>Em até 10x sem juros</p>
+                </div>
+    
+                <button>Comprar</button>
+            </div>
+    
+            <div class="destino elemento">
+                <img class="img-destino" src="./img/campinas.jpg" alt="Salvador">
+                <h3 class="destino-h3">Campinas</h3>
+                <div class="destino-roteiro">
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Áereo ida e volta
+                    </p>
+    
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        04 diárias
+                    </p>
+    
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Café da manhã
+                    </p>
+                </div>
+    
+                <h4 class="preco-destino">
+                    R$900,00
+                </h4>
+    
+                <div class="obs-destino">
+                    <p>Taxas inclusas</p>
+                    <p>Em até 10x sem juros</p>
+                </div>
+    
+                <button>Comprar</button>
+            </div>
+        </div>
+
+        <!-- Inseri aqui -->
+        <section class="novo-destino">
+            <h2>Novo Destino</h2>
+            <form id="formularioNovoDestino">
+                <label for="nomeNovo">Nome do Destino:</label>
+                <input type="text" id="nomeNovo" name="nomeNovo" required>
+        
+                <label for="imagemNovo">URL da Imagem:</label>
+                <input type="url" id="imagemNovo" name="imagemNovo" required>
+        
+                <label for="roteiroNovo">Roteiro:</label>
+                <textarea id="roteiroNovo" name="roteiroNovo" required></textarea>
+        
+                <label for="precoNovo">Preço:</label>
+                <input type="text" id="precoNovo" name="precoNovo" required>
+        
+                <button type="button" onclick="inserirNovoDestino()">Inserir</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        Desenvolvido por Alessandro C. Santos
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Adiciona um evento de clique a todos os botões "Comprar"
+            var buttons = document.querySelectorAll('button');
+            buttons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    // Captura as informações do pacote turístico
+                    var destino = this.closest('.destino');
+                    var nome = destino.querySelector('.destino-h3').innerText;
+                    var preco = destino.querySelector('.preco-destino').innerText;
+                    var roteiroItens = destino.querySelectorAll('.destino-roteiro p');
+                    var roteiro = Array.from(roteiroItens).map(function (item) {
+                        return item.innerText.trim();
+                    });
+
+                    // Cria um objeto JSON com as informações capturadas
+                    var pacoteTuristico = {
+                        nome: nome,
+                        preco: preco,
+                        roteiro: roteiro
+                    };
+
+                    // Imprime o objeto JSON no console
+                    console.log(pacoteTuristico);
+                });
+            });
+        });
+
+        /* Inseri aqui */
+        function inserirNovoDestino() {
+            // Captura os valores do formulário
+            var nomeNovo = document.getElementById('nomeNovo').value;
+            var imagemURLNovo = document.getElementById('imagemNovo').value;
+            var roteiroNovo = document.getElementById('roteiroNovo').value.split(',');
+            var precoNovo = document.getElementById('precoNovo').value;
+
+            // Cria um novo elemento destino
+            var novoDestino = document.createElement('div');
+            novoDestino.className = 'destino elemento';
+
+            // Adiciona a imagem ao novo destino
+            var imagemNovo = document.createElement('img');
+            imagemNovo.src = imagemURLNovo;
+            imagemNovo.alt = nomeNovo;
+            novoDestino.appendChild(imagemNovo).className = 'img-destino';
+
+            // Adiciona as informações ao novo destino
+            novoDestino.innerHTML += `<h3 class="destino-h3">${nomeNovo}</h3>`;
+            novoDestino.innerHTML += '<div class="destino-roteiro">';
+            roteiroNovo.forEach(function (roteiroItem) {
+            novoDestino.innerHTML += `<p><i class="fa-solid fa-check"></i> ${roteiroItem.trim()}</p>`;
+            });
+            novoDestino.innerHTML += '</div>';
+            novoDestino.innerHTML += `<h4 class="preco-destino">R$${precoNovo}</h4>`;
+            novoDestino.innerHTML += '<div class="obs-destino">';
+            novoDestino.innerHTML += '<p>Taxas inclusas</p>';
+            novoDestino.innerHTML += '<p>Em até 10x sem juros</p>';
+            novoDestino.innerHTML += '</div>';
+            novoDestino.innerHTML += '<button>Comprar</button>';
+
+            // Insere o novo destino na classe container-destinos
+            var containerDestinos = document.querySelector('.flex-main');
+            containerDestinos.appendChild(novoDestino);
+
+            // Limpa os campos do formulário
+            document.getElementById('formularioNovoDestino').reset();
+    }
+    </script>
+</body>
+</html>

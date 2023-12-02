@@ -1,0 +1,17 @@
+.novo-destino{
+    border: 2px solid black;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 20px;
+    
+}
+
+#formularioNovoDestino{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px auto;
+}
