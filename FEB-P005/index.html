@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universidade Estadual de Santa Cruz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Playfair+Display&family=Roboto:wght@300&family=Vina+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <a href="/index.html">
+            <img class="logo-menu" src="brasao.png" alt="Brasão Uesc">
+        </a>
+        <h1>Universidade Estadual de Santa Cruz</h1>
+    </header>
+
+    <section class="menu">
+        <h2>Fronteiras do Brasil</h2>
+        <div class="linha"></div>
+
+        <div class="links-menu">
+        
+        </div>
+       
+    </section>
+
+   <section class="noticias">
+        <h2>Notícias</h2>
+        <div class="linha"></div>
+
+        <div class="noticia">
+            <h3 class="titulo-noticia">Notícia 1</h3>
+            <a class="link-noticia" href=""> > Link da Notícia 1</a>
+        </div>
+
+        <div class="noticia">
+            <h3 class="titulo-noticia">Notícia 2</h3>
+            <a class="link-noticia" href=""> > Link da Notícia 2</a>
+        </div>
+
+        <div class="noticia">
+            <h3 class="titulo-noticia">Notícia 3</h3>
+            <a class="link-noticia" href=""> > Link da Notícia 3</a>
+        </div>
+   </section>
+
+   <section class="destaque">
+        <h2>Destaque</h2>
+        <div class="linha"></div>
+
+        <div class="imgs-destaque">
+            <img src="img1.jpg" alt="Logo Fapesb">
+            <img src="img2.png" alt="Logo Adusc">
+        </div>
+        
+   </section>
+
+   <section class="servicos">
+        <h2>Serviços</h2>
+        <div class="linha"></div>
+
+        <div class="links-menu">
+            <a href="">Pesquisa</a>
+            <a href="">Formação</a>
+            <a href="">Digitalização</a>
+            <a href="">Certificação</a>
+            <a href="">Hospedagem</a>
+            <a href="">Transferência Externa</a>
+        </div>
+   </section>
+
+   <section class="resultados">
+        <h2>Resultados</h2>
+        <div class="linha"></div>
+
+        <div class="noticia">
+            <h3 class="titulo-noticia">Seleção Pública Professor Substituto - Edital N°1999</h3>
+            <div class="div-link-resultados">
+                <a class="link-noticia" href=""> > Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+                <a class="link-noticia" href=""> > Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+            </div>
+            
+        </div>
+
+        <div class="noticia">
+            <h3 class="titulo-noticia">Concurso para Analista e Técnico Universitário - Ed. Nº 13/2018</h3>
+            <div class="div-link-resultados">
+                <a class="link-noticia" href=""> > Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+                <a class="link-noticia" href=""> > Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+            </div>
+            
+        </div>
+
+        <div class="noticia">
+            <h3 class="titulo-noticia">Doutorado Desenvolvimento Regional e Meio Ambiente</h3>
+            <div class="div-link-resultados">
+                <a class="link-noticia" href=""> > Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+            </div>
+           
+        </div>
+   </section>
+
+   <footer class="footer">
+        <h2>Universidade Estadual de Santa Cruz - UESC</h2>
+   </footer>
+
+   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+          const countryCode = "BR"; // Substitua isso pelo código do país desejado
+          const apiUrl = `https://restcountries.com/v3.1/alpha/${countryCode}`;
+      
+          fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+              //const countryInfoElement = document.getElementById("country-info");
+              const fronteiras = document.getElementsByClassName("links-menu");
+              const borders = data[0].borders;
+
+              borders.forEach(border => {
+                const novoLink = document.createElement("a");
+                novoLink.textContent = border;
+                fronteiras[0].appendChild(novoLink);
+              });
+      
+              // Exemplo: Mostrar o nome do país
+              //countryInfoElement.innerHTML = `<h1>${data[0].name.common}</h1>`;
+             // console.log(data)
+      
+              // Você pode adicionar mais elementos HTML para exibir outros dados do país aqui
+      
+            })
+            .catch(error => {
+              console.error("Erro na requisição:", error);
+            });
+
+            /* API DE PIADAS */
+            const urlPiadas = 'https://v2.jokeapi.dev/joke/Any?type=twopart&amount=6'
+            fetch(urlPiadas)
+             .then(response => response.json())
+             .then(piadas => {
+                console.log(piadas.jokes[0].setup);
+             })
+             .catch(error => {
+              console.error("Erro na requisição de piadas:", error);
+            });
+        });
+   </script>
+</body>
+</html>

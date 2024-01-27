@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Testando solictaçõe de API</h1>
+
+    <div id="country-info">
+        <!-- Os dados do país serão exibidos aqui -->
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const countryCode = "BR"; // Substitua isso pelo código do país desejado
+          const apiUrl = `https://restcountries.com/v3.1/alpha/${countryCode}`;
+      
+          fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+              const countryInfoElement = document.getElementById("country-info");
+      
+              // Exemplo: Mostrar o nome do país
+              countryInfoElement.innerHTML = `<h1>${data[0].name.common}</h1>`;
+              console.log(data)
+      
+              // Você pode adicionar mais elementos HTML para exibir outros dados do país aqui
+      
+            })
+            .catch(error => {
+              console.error("Erro na requisição:", error);
+            });
+        });
+      </script>
+</body>
+</html>
