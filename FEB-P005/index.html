@@ -36,18 +36,7 @@
         <div class="linha"></div>
 
         <div class="noticia">
-            <h3 class="titulo-noticia">Notícia 1</h3>
-            <a class="link-noticia" href=""> > Link da Notícia 1</a>
-        </div>
-
-        <div class="noticia">
-            <h3 class="titulo-noticia">Notícia 2</h3>
-            <a class="link-noticia" href=""> > Link da Notícia 2</a>
-        </div>
-
-        <div class="noticia">
-            <h3 class="titulo-noticia">Notícia 3</h3>
-            <a class="link-noticia" href=""> > Link da Notícia 3</a>
+            
         </div>
    </section>
 
@@ -129,23 +118,32 @@
                 fronteiras[0].appendChild(novoLink);
               });
       
-              // Exemplo: Mostrar o nome do país
-              //countryInfoElement.innerHTML = `<h1>${data[0].name.common}</h1>`;
-             // console.log(data)
-      
-              // Você pode adicionar mais elementos HTML para exibir outros dados do país aqui
-      
             })
             .catch(error => {
               console.error("Erro na requisição:", error);
             });
 
             /* API DE PIADAS */
-            const urlPiadas = 'https://v2.jokeapi.dev/joke/Any?type=twopart&amount=6'
+            const urlPiadas = 'https://v2.jokeapi.dev/joke/Any?type=twopart&amount=6';
+            const divNoticias = document.getElementsByClassName("noticia");
+            const tituloNoticia = divNoticias[0].querySelector(".titulo-noticia");
+            const linkNOticia = divNoticias[0].querySelector(".link-noticia");
+            console.log();
             fetch(urlPiadas)
              .then(response => response.json())
              .then(piadas => {
-                console.log(piadas.jokes[0].setup);
+                piadas.jokes.forEach(piada =>{
+                    const novoTitulo = document.createElement("h3");
+                    novoTitulo.classList.add("titulo-noticia");
+                    novoTitulo.textContent = piada.setup;
+                    divNoticias[0].appendChild(novoTitulo);
+
+                    const novoLink = document.createElement("a");
+                    novoLink.classList.add("link-noticia");
+                    novoLink.textContent = ">" + piada.delivery;
+                    divNoticias[0].appendChild(novoLink);
+
+                });
              })
              .catch(error => {
               console.error("Erro na requisição de piadas:", error);
