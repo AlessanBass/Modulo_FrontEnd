@@ -1,0 +1,14 @@
+.teste{
+        display: grid;
+        text-align: center;
+        background-color: #005B41;
+        display: grid;
+        color: white;
+        grid-template-areas: 
+         "header header header"
+         "menu noticias destaque"
+         "servicos resultados resultados"
+         "footer footer footer"
+        ;
+        font-family: 'Montserrat', sans-serif;
+}
